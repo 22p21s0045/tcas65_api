@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
-
+const db = require('../database/query');
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'title' });
+router.get('/', async function(req, res, next) {
+  const data = await db.getAll();
+  res.json({ title: 'tcas65_data', data: data });
+
+  
 });
 
 module.exports = router;
